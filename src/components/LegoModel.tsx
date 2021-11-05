@@ -1,14 +1,21 @@
-import React from 'react';
-import { useLoader } from '@react-three/fiber';
-import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
 
-function LegoModel () {
-  const gltf = useLoader(GLTFLoader, '/Lego.glb');
+import React, { useRef } from 'react';
+import { useGLTF } from '@react-three/drei';
+
+export default function LegoModel(props: { position: Number[], scale: Number }) {
+  const group = useRef()
+  const { nodes, materials } = useGLTF('/LegoBase.glb')
   return (
-    <>
-      <primitive object={gltf.scene} scale={0.5} />
-    </>
+    <group ref={group} {...props} dispose={null}>
+      <mesh
+        castShadow
+        receiveShadow
+        geometry={nodes.Cube001.geometry}
+        material={nodes.Cube001.material}
+        position={[0, 0.46, 4]}
+      />
+    </group>
   )
 }
 
-export default LegoModel;
+useGLTF.preload('/LegoBase.glb')

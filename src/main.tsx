@@ -4,7 +4,7 @@ import ReactDOM from 'react-dom'
 import App from './App'
 import Box from './components/Box';
 import Floor from './components/Floor';
-import LegoModel from './components/LegoModel';
+import LegoBoard from './components/LegoBoard';
 
 import './index.css'
 
@@ -16,7 +16,7 @@ ReactDOM.render(
     {/* <Box position={[-1.2,0,0]} />
     <Box position={[1.2,0,0]} /> */}
     {/* <Floor /> */}
-    <LegoModel />
+    <LegoBoard />
   </App>,
   document.getElementById('root')
 )
